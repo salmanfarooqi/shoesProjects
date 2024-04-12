@@ -1,17 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header.jsx'
+import React, { useState } from 'react';
+
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [file, setFile] = useState(null);
+
+  const handleUpload = () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      
+    } else {
+      console.log('No file selected');
+    }
+  };
 
   return (
-   <div>
-    <Header/>
-   </div>
-  )
+    <div>
+      <input type="file" accept=".jpg,.jpeg,.png" onChange={(e) => setFile(e.target.files[0])} />
+      <button onClick={handleUpload}>Upload</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
