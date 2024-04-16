@@ -9,12 +9,15 @@ const createOrder = async (req, res) => {
     const { userId, products, totalAmount,zipCode,address,phone } = req.body;
 
     // Create a new order instance
+    console.log("order",req.body)
     const newOrder = new Order({
       userId,
       products, // Assuming products is an array of objects containing productId and quantity
       
       totalAmount,
-      zipCode,address,phone
+      zipCode,
+      address,
+    phone
       
 
 
@@ -24,7 +27,7 @@ const createOrder = async (req, res) => {
     await newOrder.save();
 
     // Send a success response
-    res.status(201).json({ success: true, message: 'Order created successfully', order: newOrder });
+    res.status(201).json({ message: 'Order placed successfully' });
   } catch (error) {
     // Send an error response if something goes wrong
     res.status(500).json({ success: false, error: error.message });
@@ -32,19 +35,19 @@ const createOrder = async (req, res) => {
 };
 
 // Controller function to get all orders
-// const getOrders = async (req, res) => {
-//   try {
-//     // Fetch all orders from the database
-//     const orders = await Order.find().populate('userId'); // Assuming you want to populate the userId with username
+const getOrders = async (req, res) => {
+  try {
+    // Fetch all orders from the database
+    const orders = await Order.find({}) // Assuming you want to populate the userId with username
 
-//     // Send the orders as a response
-//     console.log("orders",orders)
-//     res.status(200).json({ success: true, orders });
-//   } catch (error) {
-//     // Send an error response if something goes wrong
-//     console.log("err",error)
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// };
+    // Send the orders as a response
+    console.log("orders",orders)
+    res.status(200).json({  orders });
+  } catch (error) {
+    // Send an error response if something goes wrong
+    console.log("err",error)
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
 
-module.exports = { createOrder };
+module.exports = { createOrder,getOrders };

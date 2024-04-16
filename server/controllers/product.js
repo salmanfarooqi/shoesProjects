@@ -9,7 +9,7 @@ const productContoller = async (req, res) => {
 }
 
 const getProductById = async (req, res) => {
-    const { id } = req.params; // Destructure the id directly
+    const { id } = req.params 
     console.log("id is ",id)
 
     try {

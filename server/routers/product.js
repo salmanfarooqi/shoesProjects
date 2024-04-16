@@ -6,9 +6,9 @@ const productRouter=express.Router()
 
 productRouter.post("/addproduct",productContoller)
 
-productRouter.get("/",getAllProducts)
+productRouter.get("/getproducts",getAllProducts)
 productRouter.get("/getmensproducts",getAllMenProducts)
 productRouter.get("/getwomensproducts",getAllWomenProducts)
-productRouter.get("/getproductById/:id", getProductById);
+productRouter.get("/ProductDetails/:id", getProductById);
 
 module.exports=productRouter
