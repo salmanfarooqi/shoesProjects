@@ -11,5 +11,4 @@ productRouter.get("/getmensproducts",getAllMenProducts)
 productRouter.get("/getwomensproducts",getAllWomenProducts)
 productRouter.get("/getproductById/:id", getProductById);
 
-
 module.exports=productRouter
