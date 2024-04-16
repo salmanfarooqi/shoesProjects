@@ -1,87 +1,102 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import HomeSlider from "../components/HomeSilder";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 function Home() {
 
-  const itemsData = [
-    {
-      id: 1,
-      image: "public/Home/item-1.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-2.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 1,
-      image: "public/Home/item-3.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-4.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 1,
-      image: "public/Home/item-5.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-6.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 1,
-      image: "public/Home/item-7.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-8.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 1,
-      image: "public/Home/item-9.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-10.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 1,
-      image: "public/Home/item-11.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
-    {
-      id: 2,
-      image: "public/Home/item-12.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00"
-    },
+  // const itemsData = [
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-1.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-2.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-3.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-4.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-5.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-6.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-7.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-8.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-9.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-10.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 1,
+  //     image: "public/Home/item-11.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "public/Home/item-12.jpg",
+  //     title: "WOMEN'S BOOTS SHOES MACA",
+  //     price: "£123.00"
+  //   },
  
-    // Add more items data here
-  ];
+  //   // Add more items data here
+  // ];
+  const [itemsData,setitemsData]=useState([{}
+  
+  ])
+
+  useEffect(()=>{
+    let fetchData=async()=>{
+      let data=await axios.get("http://localhost:9000")
+      console.log("data",data)
+  setitemsData(data.data)
+
+    }
+    fetchData()
+    console.log("fetch data",itemsData)
+  },[itemsData])
   
   return (
     <Layout>
@@ -134,12 +149,12 @@ function Home() {
           </div>
         </div>
         <div className="w-full flex justify-center">
-      <div className="w-[70%] flex justify-between flex-wrap">
+      <div className="w-[70%] flex space-x-4 flex-wrap">
         {itemsData.map((item) => (
-          <div key={item.id} className="flex flex-col border mt-4 w-full sm:w-[220px] justify-center items-center">
-            <img src={item.image} alt="" className="object-cover" />
-            <p className="text-center px-2 py-2">{item.title}</p>
-            <p className="py-3">{item.price}</p>
+          <div key={item._id} className="flex flex-col border mt-4 w-full sm:w-[220px] justify-center items-center">
+            <img src={item.imageUrl} alt="" className="object-cover" />
+            <p className="text-center px-2 py-2">{item.name}</p>
+            <p className="py-3">{ " £"+item.price}</p>
             <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
           </div>
         ))}
