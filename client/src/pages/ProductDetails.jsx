@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function ProductDetails() {
   // State for quantity of the product
@@ -16,28 +17,41 @@ function ProductDetails() {
     const value = parseInt(event.target.value);
     setQuantity(value);
   };
-
+  const { id } = useParams();
   // Calculate total price based on quantity
   const totalPrice = (price * quantity).toFixed(2);
+  
+  const [itemsData,setitemsData]=useState({
+    id:"",
+    price:"",
+    imageUrl:"",
+    description:"",
 
+
+  }
+  
+  )
+
+ 
+      let data=axios.post(`http://localhost:9000/ProductDetails`,{
+        id:"661e56c803cb0efc3df5143b"
+      })
+      console.log("data",data)
+  
+      data.data.map(()=>{
+        setitemsData({
+          id:item._id,
+          price:item.price,
+          imageUrl:item.imageUrl
+        })
+      })
+
+  
   // Get the product ID from the URL params
-  const { id } = useParams();
+ 
 
   // Fetch product details based on the product ID
-  useEffect(() => {
-    const fetchProductDetails = async () => {
-      try {
-        // Placeholder for fetching product details using the product ID
-        // Example: const response = await axios.get(`/api/products/${id}`);
-        // Set the product state with the fetched data
-        // setProduct(response.data);
-      } catch (error) {
-        console.error("Error fetching product details:", error);
-      }
-    };
 
-    fetchProductDetails();
-  }, [id]);
 
   return (
     <Layout>
@@ -74,13 +88,7 @@ function ProductDetails() {
                 <p className="text-xl font-bold">BOOTS SHOES MACA</p>
                 <p className="text-xl font-bold">£{totalPrice}</p>
                 <p className="mt-[20px]">
-                  The quality of shoes is paramount for comfort, durability, and
-                  style. Quality shoes are crafted from premium materials,
-                  featuring precise stitching and superior construction. They
-                  offer excellent support, traction, and breathability, ensuring
-                  long-lasting wear and foot health. Attention to detail in
-                  design and manufacturing distinguishes high-quality shoes,
-                  enhancing overall satisfaction and performance.
+                {itemsData.description}
                 </p>
                 {/* Size Selector */}
                 <div className="w-full flex  items-center gap-4">
