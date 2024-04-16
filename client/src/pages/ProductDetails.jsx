@@ -248,6 +248,7 @@ import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import {toast,ToastContainer} from 'react-toastify'
 
 function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
@@ -345,9 +346,24 @@ const response = await axios.post("http://localhost:9000/add-to-cart", {
 
         <div className="w-full flex justify-center mt-[650px] xs:mt-[600px] sm:mt-[750px] md:mt-[400px] lg:mt-[500px]">
           <div className="w-[70%] h-[100px] md:h-[250px] flex justify-between flex-wrap">
-            {/* Brand images */}
+          <div className="w-[60px] md:w-[150px]">
+              <img src="/public/Home/brand-1.jpg" alt="Brand 1" />
+            </div>
+            <div className="w-[60px] md:w-[150px]">
+              <img src="/public/Home/brand-2.jpg" alt="Brand 2" />
+            </div>
+            <div className="w-[60px] md:w-[150px]">
+              <img src="/public/Home/brand-3.jpg" alt="Brand 3" />
+            </div>
+            <div className="w-[60px] md:w-[150px]">
+              <img src="/public/Home/brand-4.jpg" alt="Brand 4" />
+            </div>
+            <div className="w-[60px] md:w-[150px]">
+              <img src="/public/Home/brand-5.jpg" alt="Brand 5" />
+            </div>
           </div>
         </div>
+        <ToastContainer/>
       </div>
     </Layout>
   );

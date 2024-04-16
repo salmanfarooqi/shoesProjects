@@ -55,10 +55,10 @@ function About() {
                 <span className="">/</span>About
               </p>
             </div>
-            <p className="text-center mt-4 text-6xl font-medium">
+            <p className="text-center mt-4 text-2xl md:text-4xl lg:text-6xl font-medium">
               SHOES COLLECTION
             </p>
-            <p className="text-center mt-4 text-6xl font-medium">
+            <p className="text-center mt-4 text-2xl md:text-4xl lg:text-6xl font-medium">
               STAY HERE FOR THE BEST SHOES
             </p>
             <div className="flex justify-between w-full mt-16">

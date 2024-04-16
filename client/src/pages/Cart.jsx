@@ -172,33 +172,33 @@ const response = await axios.post("http://localhost:9000/add-to-cart", {
                   <table className="table w-full   " >
                     <thead className=''>
                       <tr className='bg-[#a1ddd4] w-full rounded-full'>
-                        <th className="text-center py-3 rounded-l-full">Image</th>
-                        <th className="text-center">Product</th>
-                        <th className="text-center">Price</th>
-                        <th className="text-center">Quantity</th>
-                        <th className="text-center">Total</th>
-                        <th className="text-center rounded-r-full">Remove</th>
+                        <th className="text-center py-3 rounded-l-full text-[12px] sm:text-lg">Image</th>
+                        <th className="text-center text-[12px] sm:text-lg">Product</th>
+                        <th className="text-center text-[12px] sm:text-lg">Price</th>
+                        <th className="text-center text-[12px] sm:text-lg">Quantity</th>
+                        <th className="text-center text-[12px] sm:text-lg">Total</th>
+                        <th className="text-center rounded-r-full text-[12px] sm:text-lg">Remove</th>
                       </tr>
                     </thead>
                     <tbody>
                       {cartItems.map(item => (
                         <tr key={item.id}>
                           <td className="text-center ">
-                            <img src={item.image} alt="Image" className="w-16 sm:w-24 h-16 sm:h-24 !rounded-full sm:rounded-none object-cover mx-auto" />
+                            <img src={item.image} alt="Image" className="w-12 sm:w-24 h-12 sm:h-24 !rounded-full sm:rounded-none object-cover mx-auto" />
                           </td>
                           <td className="text-center">
-                            <h2 className="h5 text-black">{item.name}</h2>
+                            <h2 className="h5 text-[12px] sm:text-lg text-black">{item.name}</h2>
                           </td>
-                          <td className="text-center">&pound;{item.price}</td>
+                          <td className="text-center text-[10px] sm:text-lg">&pound;{item.price}</td>
                           <td className="text-center">
-                            <div className="flex justify-center items-center space-x-2">
-                              <button className="btn btn-outline-black decrease" type="button" onClick={() => updateQuantity(item.id, Math.max(item.quantity - 1, 1))}>&minus;</button>
-                              <input type="text" className="form-input text-center w-10 sm:w-12" value={item.quantity} readOnly />
-                              <button className="btn btn-outline-black increase" type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)}> + </button>
+                            <div className="flex justify-center items-center space-x-1 sm:space-x-2">
+                              <button className="btn btn-outline-black decrease text-[12px] sm:text-lg" type="button" onClick={() => updateQuantity(item.id, Math.max(item.quantity - 1, 1))}>&minus;</button>
+                              <input type="text" className="form-input text-center w-8 sm:w-12 text-[12px] sm:text-lg" value={item.quantity} readOnly />
+                              <button className="btn btn-outline-black increase text-[12px] sm:text-lg" type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)}> + </button>
                             </div>
                           </td>
-                          <td className="text-center"> &pound;{(item.price * item.quantity)}</td>
-                          <td className="text-center" onClick={(e) => handleDelete(item.id,e)} ><button className="">X</button></td>
+                          <td className="text-center text-[12px] sm:text-lg"> &pound;{(item.price * item.quantity)}</td>
+                          <td className="text-center text-[12px] sm:text-lg" onClick={(e) => handleDelete(item.id,e)} ><button className="text-[12px] sm:text-lg">X</button></td>
                         </tr>
                       ))}
                     </tbody>

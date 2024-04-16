@@ -50,7 +50,7 @@ function CustomArrows({ testimonials,  className }) {
         {testimonials.map((testimonial, index) => (
           <div key={index}>
             <div className="flex flex-col items-center justify-center">        
-              <p className="mt-2 text-gray-500 text-xl w-3/4 text-center">
+              <p className="mt-2 text-gray-500 text-xs sm:text-base md:text-xl w-3/4 text-center">
                 {testimonial.quote}
               </p>
               <div className="flex flex-col items-center justify-center mt-10">

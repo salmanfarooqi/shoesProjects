@@ -79,7 +79,7 @@ const response = await axios.post("http://localhost:9000/add-to-cart", {
               </p>
               <div className="w-full flex justify-center py-4 bg-[#88C8BC]">
                 <div className="">
-                  <ul className=" flex justify-between text-white text-xs sm:text-sm md:text-[14px] gap-6">
+                  <ul className=" flex justify-between text-white px-2 text-[10px] sm:text-sm md:text-[14px] gap-6">
                     <li className="">
                       <Link to="">NEW ARRIVALS</Link>
                     </li>
