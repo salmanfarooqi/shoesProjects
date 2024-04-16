@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {toast,ToastContainer} from 'react-toastify'
 
 function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
@@ -13,6 +14,7 @@ function ShoppingCart() {
   const [total, setTotal] = useState(0);
   const [reload,setReload]=useState(false)
   const navigate = useNavigate();
+
 
 
 
@@ -68,6 +70,34 @@ function ShoppingCart() {
 
   //   fetchProducts();
   // }, [reload]);
+  const [itemsData,setitemsData]=useState([{}
+  
+  ])
+  useEffect(()=>{
+    let fetchData=async()=>{
+      let data=await axios.get("http://localhost:9000")
+      console.log("data",data)
+  setitemsData(data.data)
+
+    }
+    fetchData()
+    console.log("fetch data",itemsData)
+  },[])
+
+  const addToCart = async (productId) => {
+    try {
+// Cartrouter.post('/add-to-cart', cartController.addToCart);
+const response = await axios.post("http://localhost:9000/add-to-cart", {
+        productId: productId,
+        userId:localStorage.getItem("userId")
+        
+      });
+       toast.success(response.data.message)
+      // You can handle the response or any other action after adding to cart
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
 
 
   let handleDelete=async(id,e)=>{
@@ -126,34 +156,7 @@ function ShoppingCart() {
     navigate('/Checkout');
   };
 
-  const itemsData = [
-    {
-      id: 1,
-      image: "public/Home/item-1.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00",
-    },
-    {
-      id: 2,
-      image: "public/Home/item-2.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00",
-    },
-    {
-      id: 3,
-      image: "public/Home/item-3.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00",
-    },
-    {
-      id: 2,
-      image: "public/Home/item-2.jpg",
-      title: "WOMEN'S BOOTS SHOES MACA",
-      price: "£123.00",
-    },
   
-  ];
-
   return (
     <Layout>
       <>
@@ -263,7 +266,12 @@ function ShoppingCart() {
                 <img src={item.imageUrl} alt="" className="object-cover" />
                 <p className="text-center px-2 py-2">{item.name}</p>
                 <p className="py-3">{item.price}</p>
-                <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
+                <Link
+            className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]"
+            onClick={() => addToCart(item._id)}
+          >
+            Add To Cart
+          </Link>
               </Link>
             ))}
           </div>
@@ -287,7 +295,7 @@ function ShoppingCart() {
             </div>
           </div>
         </div>
-          
+          <ToastContainer/>
         </div>
       </>
     </Layout>

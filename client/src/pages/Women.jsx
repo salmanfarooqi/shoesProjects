@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {toast,ToastContainer} from 'react-toastify'
 
 function Women() {
 
@@ -138,6 +139,8 @@ const response = await axios.post("http://localhost:9000/add-to-cart", {
             </div>
           </div>
         </div>
+
+        <ToastContainer/>
       </div>
     </Layout>
   );

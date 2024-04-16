@@ -123,18 +123,20 @@
 
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CiShoppingCart } from "react-icons/ci";
 import { BsFillPersonFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownManuallyClosed, setDropdownManuallyClosed] = useState(false); // State to track manual close
   const navigate = useNavigate();
+  const [cartLength,setCartLenght]=useState(0)
 
   const navbardata = [
     {
@@ -178,6 +180,24 @@ const Navbar = () => {
     navigate("/");
   };
 
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:9000/getCartData');
+        const data = response.data;
+        const userIdFromLocalStorage = localStorage.getItem('userId');
+        const filteredCartItems = data.filter(item => item.userId === userIdFromLocalStorage);
+        setCartLenght(filteredCartItems?.length);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+
+    fetchCartItems();
+    console.log("cartLenght",cartLength)
+    
+  }, []);
+
   return (
     <div className="w-full flex justify-center items-center bg-[#d9f4f0] h-20 sticky top-0 z-50">
       <div className="flex w-[70%]">
@@ -219,7 +239,7 @@ const Navbar = () => {
         <div className="w-1/2 justify-end items-center text-2xl gap-7 hidden md:flex">
           <Link to="/cart" className=" ">
             <p className="flex justify-center items-center gap-2 text-sm">
-              <CiShoppingCart className="w-4 h-4" /> cart [0]
+              <CiShoppingCart className="w-4 h-4" /> cart [{cartLength}]
             </p>
           </Link>
           <Link to="/login">

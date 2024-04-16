@@ -11,7 +11,7 @@ function YourOrder({ className, phoneNumber, postalZip, streetAddress }) {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get('http://localhost:9000');
+        const response = await axios.get('http://localhost:9000/getCartData');
         const data = response.data;
         const userIdFromLocalStorage = localStorage.getItem('userId');
         const filteredCartItems = data.filter(item => item.userId === userIdFromLocalStorage);

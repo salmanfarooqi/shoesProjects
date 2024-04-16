@@ -20,9 +20,9 @@ import Checkout from './pages/Checkout';
 // import Shop from './pages/Shop';
 // import Blogs from './pages/Blogs';
 // import ContactForm from './pages/ContactUs';
-// import ProtectRoute from './components/ProtectRoute';
 // import Checkout from './pages/Checkout';
 // import ThankYouPage from './pages/ThankYour';
+import ProtectedRoute from './components/ProtectRoute';
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
     <Routes>
     <Route path="/" element={<Home/>} />
    <Route path='/Men' element={ <Men/>} />
-   <Route path='/cart' element={<Cart />}/>
+   <Route path='/cart' element={<ProtectedRoute component={Cart} />}/>
    <Route path='/ProductDetails/:id' element={<ProductDetails/>} />
    <Route path='/Women' element={<Women/>} />
    <Route  path='/About' element={<About/>} />
