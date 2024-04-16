@@ -4,6 +4,7 @@ const connectDb = require('./config/db.js')
 const userRouter = require('./routers/user.js')
 const productRouter = require('./routers/product.js')
 const Cartrouter = require('./routers/cartRouter.js')
+const OrderRouter = require('./routers/OrderRouter.js')
 // const cartRouter = require('./routers/Cart.js')
 const app=express()
 
@@ -14,6 +15,7 @@ connectDb()
 app.use(userRouter)
 app.use(productRouter)
 app.use(Cartrouter)
+app.use(OrderRouter)
 let port=9000
 app.listen(port,()=>{
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
 
 function YourOrder({ className, phoneNumber, postalZip, streetAddress }) {
   const [cartData, setCartData] = useState([]);
@@ -99,8 +98,8 @@ function YourOrder({ className, phoneNumber, postalZip, streetAddress }) {
         </div>
       </div>
       <div className='flex w-full justify-center'>
-      <Link to="/ThankYou"><button onClick={createOrder} className='bg-[#d9f4f0] hover:bg-[#88C8BC]  text-black px-4 py-2 rounded-md mt-4'>Place Order</button></Link>
-       {/* <button onClick={createOrder} className='bg-[#3B5D50] text-white px-4 py-2 rounded-md mt-4'>Place Order</button> */}
+      <button onClick={createOrder} className='bg-[#d9f4f0] hover:bg-[#88C8BC]  text-black px-4 py-2 rounded-md mt-4'>Place Order</button>
+      {/* <button onClick={createOrder} className='bg-[#3B5D50] text-white px-4 py-2 rounded-md mt-4'>Place Order</button> */}
       <ToastContainer/>
       </div>
     </div>

@@ -90,7 +90,7 @@ function Home() {
 
   useEffect(()=>{
     let fetchData=async()=>{
-      let data=await axios.get("http://localhost:9000")
+      let data=await axios.get("http://localhost:9000/getproducts")
       console.log("data",data)
   setitemsData(data.data)
 
