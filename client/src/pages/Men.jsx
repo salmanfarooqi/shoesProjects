@@ -100,8 +100,8 @@ function Men() {
       <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
             {itemsData.map((item) => (
               <Link
-               to={`/ProductDetails/${item.id}`}
-                key={item.id}
+               to={`/ProductDetails/${item._id}`}
+                key={item._id}
                 className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
                 <img src={item.imageUrl} alt="" className="object-cover" />

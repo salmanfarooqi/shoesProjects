@@ -250,16 +250,17 @@ function ShoppingCart() {
             </div>
           </div>
 
-          <div className="w-full flex justify-center items-center">
-          <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
+          
+        <div className="w-full flex justify-center">
+      <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
             {itemsData.map((item) => (
               <Link
-               to={`/ProductDetails/${item.id}`}
-                key={item.id}
+               to={`/ProductDetails/${item._id}`}
+                key={item._id}
                 className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
-                <img src={item.image} alt="" className="object-cover" />
-                <p className="text-center px-2 py-2">{item.title}</p>
+                <img src={item.imageUrl} alt="" className="object-cover" />
+                <p className="text-center px-2 py-2">{item.name}</p>
                 <p className="py-3">{item.price}</p>
                 <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
               </Link>
