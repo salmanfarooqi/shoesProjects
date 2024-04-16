@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {toast,ToastContainer} from 'react-toastify'
 
 function Men() {
   const [itemsData,setitemsData]=useState([{}
@@ -19,6 +20,34 @@ function Men() {
     fetchData()
     console.log("fetch data",itemsData)
   },[itemsData])
+
+
+  useEffect(()=>{
+    let fetchData=async()=>{
+      let data=await axios.get("http://localhost:9000/getwomensproducts")
+      console.log("data",data)
+  setitemsData(data.data)
+
+    }
+    fetchData()
+    console.log("fetch data",itemsData)
+  },[])
+ 
+  const addToCart = async (productId) => {
+    try {
+// Cartrouter.post('/add-to-cart', cartController.addToCart);
+const response = await axios.post("http://localhost:9000/add-to-cart", {
+        productId: productId,
+        userId:localStorage.getItem("userId")
+        
+      });
+       toast.success(response.data.message)
+      // You can handle the response or any other action after adding to cart
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
+
   return (
     <Layout>
       <div className="w-full justify-center">
@@ -98,18 +127,23 @@ function Men() {
 
         <div className="w-full flex justify-center">
       <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
-            {itemsData.map((item) => (
-              <Link
+      {itemsData.map((item) => (
+        <Link
                to={`/ProductDetails/${item._id}`}
                 key={item._id}
                 className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
-                <img src={item.imageUrl} alt="" className="object-cover" />
-                <p className="text-center px-2 py-2">{item.name}</p>
-                <p className="py-3">{item.price}</p>
-                <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
-              </Link>
-            ))}
+          <img src={item.imageUrl} alt="" className="object-cover" />
+          <p className="text-center px-2 py-2">{item.name}</p>
+          <p className="py-3">{item.price}</p>
+          <Link
+            className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]"
+            onClick={() => addToCart(item._id)}
+          >
+            Add To Cart
+          </Link>
+        </Link>
+      ))}
           </div>
         </div>
 
@@ -132,6 +166,7 @@ function Men() {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </div>
     </Layout>
   );

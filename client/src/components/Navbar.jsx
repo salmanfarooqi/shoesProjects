@@ -198,6 +198,11 @@ const Navbar = () => {
     
   }, []);
 
+  const handleLogout=()=>{
+    localStorage.removeItem("userId")
+    localStorage.removeItem("token")
+  }
+
   return (
     <div className="w-full flex justify-center items-center bg-[#d9f4f0] h-20 sticky top-0 z-50">
       <div className="flex w-[70%]">
@@ -243,8 +248,9 @@ const Navbar = () => {
             </p>
           </Link>
           <Link to="/login">
-          <button className="text-xs  bg-[#d9f4f0] hover:bg-[#88C8BC] px-5 rounded-full py-2 border border-[#306259] ">
-            login
+          <button className="text-xs  bg-[#d9f4f0] hover:bg-[#88C8BC] px-5 rounded-full py-2 border border-[#306259] "  onClick={handleLogout}>
+           {localStorage.getItem('token') != null ? "logout" : "login"}
+
           </button>
           </Link>
         </div>
