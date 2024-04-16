@@ -5,7 +5,15 @@ import Home from './pages/Home';
 import Men from './pages/Men';
 // import LoginForm from './pages/Login';
 // // import RegisterForm from './components/Register';
-// import ShoppingCart from './pages/Cart';
+import Cart from './pages/Cart';
+import ProductDetails from './pages/ProductDetails';
+import Women from './pages/Women';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import LoginForm from './pages/Login';
+import SignUp from './pages/SignUp';
+import ThankYouPage from './pages/ThankYour';
+import Checkout from './pages/Checkout';
 // import AboutUs from './pages/AboutUs';
 // import Cart from './pages/Cart'
 // import SignUp from './pages/SignUp'
@@ -24,13 +32,22 @@ function App() {
     <Routes>
     <Route path="/" element={<Home/>} />
    <Route path='/Men' element={ <Men/>} />
-      {/* <Route path='/about' element={<AboutUs/>} />
+   <Route path='/cart' element={<Cart />}/>
+   <Route path='/ProductDetails' element={<ProductDetails/>} />
+   <Route path='/Women' element={<Women/>} />
+   <Route  path='/About' element={<About/>} />
+   <Route path='/Contact' element={<Contact/>} />
+   <Route  path='/login' element={<LoginForm/>} />
+   <Route path='/Register' element={<SignUp/>} />
+   <Route path='/ThankYou' element={<ThankYouPage/>} /> 
+   <Route path='/checkout' element={<Checkout/>} /> 
+      {/* 
       <Route  path='/login' element={<LoginForm/>} />
-      <Route path='/Register' element={<SignUp/>} />
+     
       <Route path='/Shop' element={< Shop />} />
       <Route path='/Blogs' element={<Blogs/>} />
       <Route path='/contact' element={<ProtectRoute component={ContactForm} />} />
-      <Route path='/Checkout' element={<Checkout/>} />
+     
       <Route path='/ThankYou' element={<ThankYouPage/>} /> */}
       
     

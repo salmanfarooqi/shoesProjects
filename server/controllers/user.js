@@ -48,4 +48,27 @@ const loginController = async (req, res) => {
     }
 };
 
-module.exports = { signUpController, loginController };
+
+
+const getUserById = async (req, res) => {
+    try {
+        // const {userId} = req.body;
+
+        // Retrieve the user by ID and populate the cart field
+        const user = await User.find().populate('cart');
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+       console.log("user is hit",user)
+        res.status(200).json({ user });
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+
+
+module.exports = { signUpController, loginController,getUserById };

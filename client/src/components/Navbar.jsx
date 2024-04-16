@@ -145,8 +145,8 @@ const Navbar = () => {
       title: "MEN",
       path: "/Men",
       dropdownOptions: [
-        { title: "WOMEN", path: "/Women" },
-        { title: "ABOUT", path: "/About" },
+        { title: "ProductDetails", path: "/ProductDetails" },
+        { title: "Cart", path: "/cart" },
         { title: "CONTACT", path: "/Contact" },
       ],
     },
@@ -179,7 +179,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center bg-[#FEFEFE] h-20 sticky top-0 z-50">
+    <div className="w-full flex justify-center items-center bg-[#d9f4f0] h-20 sticky top-0 z-50">
       <div className="flex w-[70%]">
         <div className="w-1/2 hidden md:flex justify-start items-center text-center gap-4 lg:gap-10 ">
           {navbardata?.map((item, index) => (
@@ -197,7 +197,7 @@ const Navbar = () => {
               </Link>
               {showDropdown && item.title === "MEN" && (
                 <div
-                  className="absolute top-full px-14 left-0  text-xs  text-center bg-[#030504] shadow-md mt-1 py-2 rounded w-full"
+                  className="absolute top-full px-14 text-left left-0  text-xs   bg-[#030504] shadow-md mt-1 py-2 rounded w-full"
                   onMouseLeave={() =>
                     item.title === "MEN" && setShowDropdown(false)
                   }
@@ -205,7 +205,7 @@ const Navbar = () => {
                   {item.dropdownOptions.map((option, index) => (
                     <div
                       key={index}
-                      className="relative -left-6 py-2 text-gray-500 hover:text-white cursor-pointer hover:bg-gray-100"
+                      className="relative -left-10 py-2 text-gray-500  hover:text-white cursor-pointer hover:bg-gray-100"
                       onClick={() => handleDropdownClick(option.path)}
                     >
                       {option.title}
@@ -222,9 +222,11 @@ const Navbar = () => {
               <CiShoppingCart className="w-4 h-4" /> cart [0]
             </p>
           </Link>
-          <button className="text-xs  bg-[#88C8BC] px-5 rounded-full py-2 border border-[#306259] hover:bg-[#23923D]">
-            SIGN UP
+          <Link to="/login">
+          <button className="text-xs  bg-[#d9f4f0] hover:bg-[#88C8BC] px-5 rounded-full py-2 border border-[#306259] ">
+            login
           </button>
+          </Link>
         </div>
         <div className="text-black md:hidden f">
           <RxHamburgerMenu
@@ -234,9 +236,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`w-full menu-container  ${showMenu ? "show-menu" : ""}`}>
-        <div className="flex justify-end ">
+        <div className="flex justify-end mr-10">
           <RxCross2
-            className="text-3xl m-4 text-white"
+            className="text-3xl m-4  text-white"
             onClick={() => setShowMenu(false)}
           />
         </div>
@@ -255,11 +257,11 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center text-2xl gap-7 md:hidden">
-            <Link to="/login" className="hover:text-white">
+          <div className="flex mt-10 items-end justify-end text-2xl gap-7 md:hidden">
+            <Link to="/login" className="text-white">
               <BsFillPersonFill />
             </Link>
-            <Link to="/cart" className="hover:text-white">
+            <Link to="/cart" className="text-white">
               <CiShoppingCart />
             </Link>
           </div>

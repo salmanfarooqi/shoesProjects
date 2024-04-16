@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
+import { Link } from "react-router-dom";
 import 'slick-carousel/slick/slick-theme.css';
 // import "./HomeSlider.css"; // Import your custom CSS file
 
@@ -51,7 +52,7 @@ function HomeSlider({ testimonials, className }) {
               <p className="text-3xl text-white py-1">SHOES</p>
               <p className="text-5xl text-white font-thin py-1">COLLECTION</p>
               <p className="text-2xl py-1">New Trending Shoes</p>
-              <button className="px-10 py-4 mt-6 bg-[#616161] text-white text-lg rounded-full">SHOP COLLECTION</button>
+              <Link to="/Men" className="bg-[#d9f4f0] hover:bg-[#88C8BC]  px-10 py-4 mt-10 text-black text-lg rounded-full">    <button className="px-10 py-4 mt-6  text-black text-lg rounded-full">SHOP COLLECTION</button></Link>
             </div>
           </div>
         </div>
@@ -65,7 +66,7 @@ function HomeSlider({ testimonials, className }) {
               <p className="text-3xl py-1 text-white">SALE</p>
               <p className="text-5xl py-1 text-white font-thin">50% OFF</p>
               <p className="text-2xl py-1">Big sale sandals</p>
-              <button className="px-10 py-4 mt-6 bg-[#616161] text-white text-lg rounded-full">SHOP COLLECTION</button>
+             <Link to="/Women" className="bg-[#d9f4f0] hover:bg-[#88C8BC] px-10 py-4 mt-10  text-black text-lg rounded-full"> <button className="px-10 py-4 mt-6  text-black text-lg rounded-full">SHOP COLLECTION</button></Link>
             </div>
           </div>
         </div>
@@ -79,7 +80,7 @@ function HomeSlider({ testimonials, className }) {
               <p className="text-3xl py-1 text-white">ARRIVAL</p>
               <p className="text-5xl py-1 text-white font-thin">UP TO 30% OFF</p>
               <p className="text-2xl py-1">New stylish shoes for men</p>
-              <button className="px-10 py-4 mt-6 bg-[#616161] text-white text-lg rounded-full">SHOP COLLECTION</button>
+             <Link to="/Men" className="bg-[#d9f4f0] hover:bg-[#88C8BC]  px-10 py-4 mt-10  text-black text-lg rounded-full"> <button className="px-10 py-4 mt-6  text-black text-lg rounded-full">SHOP COLLECTION</button> </Link>
             </div>
           </div>
         </div>

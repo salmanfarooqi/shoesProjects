@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
 import { Link } from "react-router-dom";
 
-function Men() {
+function Women() {
   const itemsData = [
     {
       id: 1,
@@ -18,61 +18,61 @@ function Men() {
       price: "£123.00",
     },
     {
-      id: 1,
+      id: 3,
       image: "public/Home/item-3.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 2,
+      id: 4,
       image: "public/Home/item-4.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 1,
+      id: 5,
       image: "public/Home/item-5.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 2,
+      id: 6,
       image: "public/Home/item-6.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 1,
+      id: 7,
       image: "public/Home/item-7.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 2,
+      id: 8,
       image: "public/Home/item-8.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 1,
+      id: 9,
       image: "public/Home/item-9.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 2,
+      id: 10,
       image: "public/Home/item-10.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 1,
+      id: 11,
       image: "public/Home/item-11.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
     },
     {
-      id: 2,
+      id: 12,
       image: "public/Home/item-12.jpg",
       title: "WOMEN'S BOOTS SHOES MACA",
       price: "£123.00",
@@ -95,7 +95,7 @@ function Men() {
                 <span className="text-[#88C8BC]">
                   <Link to="/"> HOME </Link>
                 </span>
-                <span className="">/</span>MEN
+                <span className="">/</span>Women
               </p>
             </div>
 
@@ -107,7 +107,7 @@ function Men() {
               />
 
               <p className="absolute top-[200px]  text-3xl  ml-8 font-medium">
-                MEN'S
+                WOMEN'S
               </p>
               <div className="w-full flex justify-center py-4 bg-[#88C8BC]">
                 <div className="">
@@ -161,7 +161,7 @@ function Men() {
           <div className="w-[70%] flex justify-between flex-wrap">
             {itemsData.map((item) => (
               <Link
-              to="/ProductDetails"
+               to={`/ProductDetails/${item.id}`}
                 key={item.id}
                 className="flex flex-col border mt-4  w-full sm:w-[220px] justify-center items-center"
               >
@@ -198,4 +198,4 @@ function Men() {
   );
 }
 
-export default Men;
+export default Women;

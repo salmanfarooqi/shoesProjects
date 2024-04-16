@@ -10,7 +10,7 @@ const Footer = () => {
     {
       title: "ABOUT FOOTWEAR",
       content:
-        "Footwear give you the good quality and new designs with time trending...attractive and money saving items",
+        "Footwear give you the good quality and new designs with time and money saving items",
       socialIcons: [
         { icon: <TiSocialFacebook />, link: "#" },
         { icon: <TiSocialTwitter />, link: "#" },
@@ -22,7 +22,7 @@ const Footer = () => {
       title: "CUSTOMER CARE",
       links: [
         "CONTACT",
-        "RETURNS/EXCHANGE",
+        "EXCHANGE",
         "GIFT VOUCHER",
         "WISHLIST",
         "SPECIAL",
@@ -34,7 +34,7 @@ const Footer = () => {
       title: "INFORMATION",
       links: [
         "ABOUT US",
-        "DELIVERY INFORMATION",
+        "DELIVERY",
         "PRIVACY POLICY",
         "SUPPORT",
         "ORDER TRACKING",
@@ -43,16 +43,16 @@ const Footer = () => {
     {
       title: "CONTACT INFORMATION",
       content: "291 SOUTH 21TH STREET, SUITE 721 BIRMINGHAM NY 10016",
-      links: ["+ 1235 2355 98", "INFO@YOURSITE.COM", "YOURSITE.COM"],
+      links: ["+ 1235 2355 98"],
     },
   ];
 
   return (
     <div className="w-full flex justify-center ">
-      <div className="w-[70%] flex justify-between ">
+      <div className="w-[90%] sm:w-[70%] flex justify-between ">
         {footerData.map((section, index) => (
           <div key={index} className="w-[15%] h-full">
-            <p className="text-xs">{section.title}</p>
+            <p className="text-[8px] sm:text-xs">{section.title}</p>
             {section.content && <p className="mt-10 text-[10px] text-[#6A6A6A]">{section.content}</p>}
             {section.links && (
               <div className="mt-10 flex flex-col">

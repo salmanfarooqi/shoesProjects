@@ -87,17 +87,21 @@ function Home() {
     <Layout>
       <div className="w-full justify-center ">
         <div className="w-full  h-14 bg-[#88C8BC] flex justify-center items-center">
-          <div className=" w-[90%] md:w-[40%] h-14 bg-[#88C8BC]">
+        <div className="w-full flex justify-center">
+          <div className=" w-[95%] md:w-[40%] h-14 bg-[#88C8BC]">
             <BannarSlider />
           </div>
+          </div>
         </div>
-        <div>
-          <HomeSlider />
+        <div className="w-full flex justify-center">
+        <div className="w-[95%] ">          <HomeSlider />
+       
+        </div>
         </div>
 
         <div className="w-full flex justify-center">
           <div className="w-[65%] h-[250px] flex justify-center items-center">
-            <p className="text-[44px] font-bold">
+            <p className="text-[20px] md:text-[30px] lg:text-[44px] font-bold">
               Best quality of shoes with new design
             </p>
           </div>
@@ -105,17 +109,17 @@ function Home() {
 
         <div className="w-full flex justify-between px-5">
           <div className="w-[49%]">
-            <Link>
+            <Link to="/Men">
               <img src="/public/Home/img_bg_1.jpg" alt=" " />
-              <p className="text-center mt-4 text-4xl ">
+              <p className="text-center mt-4 text-[20px] md:text-[24px] lg:text-4xl ">
                 Shop Men's Collection
               </p>
             </Link>
           </div>
           <div className="w-[49%]">
-            <Link>
+            <Link to="/Women">
               <img src="/public/Home/women.jpg" alt=" " />
-              <p className="text-center mt-4 text-4xl ">
+              <p className="text-center mt-4  text-[20px] md:text-[24px] lg:text-4xl">
                 Shop Women's Collection
               </p>
             </Link>
@@ -123,8 +127,8 @@ function Home() {
         </div>
 
         <div className="w-full flex justify-center">
-          <div className="w-[65%] h-[350px] flex justify-center items-center">
-            <p className="text-[44px] font-bold">
+          <div className="w-[65%] h-[200px] lg:h-[350px] flex justify-center items-center">
+            <p className=" text-[20px] md:text-[24px] lg:text-[44px] font-bold">
             BEST SELLERS
             </p>
           </div>
@@ -132,10 +136,11 @@ function Home() {
         <div className="w-full flex justify-center">
       <div className="w-[70%] flex justify-between flex-wrap">
         {itemsData.map((item) => (
-          <div key={item.id} className="flex flex-col border mt-4 w-[220px] justify-center items-center">
+          <div key={item.id} className="flex flex-col border mt-4 w-full sm:w-[220px] justify-center items-center">
             <img src={item.image} alt="" className="object-cover" />
             <p className="text-center px-2 py-2">{item.title}</p>
             <p className="py-3">{item.price}</p>
+            <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
           </div>
         ))}
       </div>
@@ -144,45 +149,38 @@ function Home() {
 
     <div className="w-full flex justify-center">
           <div className="w-[65%] h-[200px] flex justify-center items-center">
-           <button className="px-6 py-4 bg-[#616161] text-xs rounded-full text-white font-medium hover:bg-black">Shop All Products</button>
+           <button className="px-6 py-4 bg-[#d9f4f0] text-xs rounded-full text-black font-medium hover:bg-[#88C8BC]">Shop All Products</button>
           </div>
         </div>
 
         
     <div className="w-full flex justify-center">
-          <div className="w-[65%] h-[200px] flex justify-center items-center">
+          <div className="w-[65%] lg:h-[200px] flex justify-center items-center">
           <p className="text-base text-gray-400 font-bold">TRUSTED PARTNERS</p>
           </div>
         </div>
 
 
 
-        <div className="w-full flex justify-center">
-      <div className="w-[70%] h-[250px] flex justify-between flex-wrap">
-      <div className="w-[150px]">
-      <img src="public\Home\brand-1.jpg" alt=""/>
-
+        <div className="w-full flex justify-center lg:mt-[200px]">
+        <div className="w-[70%] h-[100px] md:h-[250px] flex justify-between flex-wrap">
+          <div className="w-[60px] md:w-[150px]">
+            <img src="public/Home/brand-1.jpg" alt="Brand 1" />
+          </div>
+          <div className="w-[60px] md:w-[150px]">
+            <img src="public/Home/brand-2.jpg" alt="Brand 2" />
+          </div>
+          <div className="w-[60px] md:w-[150px]">
+            <img src="public/Home/brand-3.jpg" alt="Brand 3" />
+          </div>
+          <div className="w-[60px] md:w-[150px]">
+            <img src="public/Home/brand-4.jpg" alt="Brand 4" />
+          </div>
+          <div className="w-[60px] md:w-[150px]">
+            <img src="public/Home/brand-5.jpg" alt="Brand 5" />
+          </div>
+        </div>
       </div>
-      <div className="w-[150px]">
-      <img src="public\Home\brand-2.jpg" alt=""/>
-
-      </div>
-      <div className="w-[150px]">
-      <img src="public\Home\brand-3.jpg" alt=""/>
-
-      </div>
-      <div className="w-[150px]">
-      <img src="public\Home\brand-4.jpg" alt=""/>
-
-      </div>
-      <div className="w-[150px]">
-      <img src="public\Home\brand-5.jpg" alt=""/>
-
-      </div>
-     
-     
-      </div>
-    </div>
 
     
       </div>
