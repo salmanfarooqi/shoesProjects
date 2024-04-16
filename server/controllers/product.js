@@ -1,25 +1,31 @@
 const Product = require("../models/product")
 
 const productContoller = async (req, res) => {
-    const { name, imageUrl, price, quantity, category } = req.body
+    const { name, imageUrl, price, quantity, category,description } = req.body
 
-    const newProduct = new Product({ name, imageUrl, price, quantity, category })
+    const newProduct = new Product({ name, imageUrl, price, quantity, category,description })
     newProduct.save()
     res.status(201).json({ message: "product is sucessfully added" })
 }
 
 const getProductById = async (req, res) => {
-    const { productId } = req.body
+    const { id } = req.params; // Destructure the id directly
+    console.log("id is ",id)
 
-    
-    const product = await Product.find({ _id: productId })
-    if(!product){
-        res.json({message:"product is not found"})
+    try {
+        const product = await Product.findById(id); // Use findById to directly find by ID
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" }); // Return early if product not found
+        }
+
+        res.json(product);
+    } catch (error) {
+        console.error("Error fetching product by ID:", error);
+        res.status(500).json({ message: "Internal server error" }); // Handle any internal errors
     }
+};
 
-    res.json(product)
-
-}
 
 
 const getAllProducts = async (req, res) => {

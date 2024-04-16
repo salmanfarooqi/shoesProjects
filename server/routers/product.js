@@ -9,5 +9,6 @@ productRouter.post("/addproduct",productContoller)
 productRouter.get("/",getAllProducts)
 productRouter.get("/getmensproducts",getAllMenProducts)
 productRouter.get("/getwomensproducts",getAllWomenProducts)
-productRouter.post("/getproductById",getProductById)
+productRouter.get("/getproductById/:id", getProductById);
+
 module.exports=productRouter

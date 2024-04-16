@@ -42,7 +42,8 @@ const loginController = async (req, res) => {
         }
 
         const token = jwt.sign({ userId: user._id }, "secretKey");
-        res.json({ token, message: "User logged in successfully" });
+        let userId=user._id
+        res.json({ token,userId, message: "User logged in successfully" });
     } catch (error) {
         res.status(500).json({ message: "Server error", error });
     }
