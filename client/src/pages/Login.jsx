@@ -66,7 +66,7 @@ function LoginForm() {
                 <input type="checkbox" className="form-checkbox" id="remember" name="remember" />
                 <label htmlFor="remember" className="ml-2">Remember me</label>
               </div> */}
-              <button type="submit" className="block w-full bg-[#d9f4f0] hover:bg-[#88C8BC]   mt-4 text-black font-semibold py-2 px-4 rounded focus:outline-none focus:bg-blue-600">Login</button>
+              <button type="submit" className="block w-full bg-blue-500   mt-4 text-black font-semibold py-2 px-4 rounded focus:outline-none focus:bg-blue-600">Login</button>
               <div className="text-center mt-4">
                 <Link to={"/register"}><p className="block mt-2 text-blue-500 hover:text-blue-700">New here? Register</p></Link>
               </div>

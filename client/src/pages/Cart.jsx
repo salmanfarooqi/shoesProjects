@@ -203,7 +203,7 @@ function ShoppingCart() {
                 </div>
               </form>
             </div>
-            <div className="md:flex md:justify-between">
+            <div className="md:flex md:justify-between px-10">
               <div className="md:w-[40%] md:mb-0">
                 <div className="flex flex-wrap items-center">
                   <div className="w-full md:w-6/12 mb-3 md:mb-0">
@@ -251,12 +251,12 @@ function ShoppingCart() {
           </div>
 
           <div className="w-full flex justify-center items-center">
-          <div className="w-[70%] flex justify-between flex-wrap">
+          <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
             {itemsData.map((item) => (
               <Link
                to={`/ProductDetails/${item.id}`}
                 key={item.id}
-                className="flex flex-col border mt-4  w-full sm:w-[220px] justify-center items-center"
+                className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
                 <img src={item.image} alt="" className="object-cover" />
                 <p className="text-center px-2 py-2">{item.title}</p>
