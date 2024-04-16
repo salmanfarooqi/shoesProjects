@@ -20,82 +20,22 @@ function Women() {
     fetchData()
     console.log("fetch data",itemsData)
   },[itemsData])
-  // const itemsData = [
-  //   {
-  //     id: 1,
-  //     image: "public/Home/item-1.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "public/Home/item-2.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: "public/Home/item-3.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: "public/Home/item-4.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: "public/Home/item-5.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 6,
-  //     image: "public/Home/item-6.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 7,
-  //     image: "public/Home/item-7.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 8,
-  //     image: "public/Home/item-8.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 9,
-  //     image: "public/Home/item-9.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 10,
-  //     image: "public/Home/item-10.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 11,
-  //     image: "public/Home/item-11.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
-  //   {
-  //     id: 12,
-  //     image: "public/Home/item-12.jpg",
-  //     title: "WOMEN'S BOOTS SHOES MACA",
-  //     price: "£123.00",
-  //   },
+ 
+  const addToCart = async (productId) => {
+    try {
+// Cartrouter.post('/add-to-cart', cartController.addToCart);
+const response = await axios.post("http://localhost:9000/add-to-cart", {
+        productId: productId,
+        userId:localStorage.getItem("userId")
+        
+      });
+       toast.success(response.data.message)
+      // You can handle the response or any other action after adding to cart
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
 
-  //   // Add more items data here
-  // ];
   return (
     <Layout>
       <div className="w-full justify-center">
@@ -146,22 +86,6 @@ function Women() {
             </div>
 
      
-
-         {/* <div className="w-full flex flex-wrap justify-between mt-6">
-  <div className="w-full sm:w-[49%] md:w-[32%] bg-red-400 h-[400px]">
-    <img src="public\Men\blog-3.jpg" alt="" className="object-cover h-[400px]"/>
-  </div>
-  <div>
-    <p className="text-5xl">CASUALS</p>
-    <button></button>
-  </div>
-  <div className="w-full sm:w-[49%] md:w-[32%] bg-red-400 h-[400px]">
-  <img src="public\Men\item-11.jpg" alt="" className="object-cover  h-[400px]"/>
-  </div>
-  <div className="w-full sm:w-[49%] md:w-[32%] bg-red-400 h-[400px]">
-  <img src="public\Men\men.jpg" alt="" className="h-[400px] object-cover"/>
-  </div>
-</div> */}
           </div>
         </div>
 
@@ -175,18 +99,23 @@ function Women() {
 
         <div className="w-full flex justify-center">
       <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
-            {itemsData.map((item) => (
-              <Link
+      {itemsData.map((item) => (
+        <Link
                to={`/ProductDetails/${item._id}`}
                 key={item._id}
                 className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
-                <img src={item.imageUrl} alt="" className="object-cover" />
-                <p className="text-center px-2 py-2">{item.name}</p>
-                <p className="py-3">{item.price}</p>
-                <Link to="/cart" className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]">Add To Cart</Link>
-              </Link>
-            ))}
+          <img src={item.imageUrl} alt="" className="object-cover" />
+          <p className="text-center px-2 py-2">{item.name}</p>
+          <p className="py-3">{item.price}</p>
+          <Link
+            className="px-2 py-1 bg-[#d9f4f0] hover:bg-[#88C8BC]"
+            onClick={() => addToCart(item._id)}
+          >
+            Add To Cart
+          </Link>
+        </Link>
+      ))}
           </div>
         </div>
 
