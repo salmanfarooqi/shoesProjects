@@ -123,7 +123,7 @@ function SignUp() {
                 </div>
                 {errors.password && <p className="text-red-500 mt-1">{errors.password}</p>}
               </div>
-              <button type="submit" className="block w-full bg-[#d9f4f0] hover:bg-[#88C8BC]  text-black font-semibold py-2 px-4 rounded  focus:outline-none focus:bg-blue-600">Sign Up</button>
+              <button type="submit" className="block w-full bg-blue-500   text-black font-semibold py-2 px-4 rounded  focus:outline-none focus:bg-blue-600">Sign Up</button>
               <div className="text-center mt-3">
                 <Link to="/login"><p className="block text-blue-500 hover:text-blue-700">Already have an account? Login</p></Link>
               </div>

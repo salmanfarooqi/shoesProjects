@@ -1,57 +1,35 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import BannarSlider from "../components/BannarSlider";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function ProductDetails() {
-  // State for quantity of the product
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null);
   
-  // Price of the product (example price)
-  const price = 142.00;
+  useEffect(() => {
+    const fetchProduct = async () => {
+       let { id } = useParams(); 
+      try {
+        const response = await axios.get(`http://localhost:9000/ProductDetails/${id}`)
+         
+    
+        // setProduct(response.data); // Assuming response contains product data
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    }
 
-  // Function to handle quantity change
+    fetchProduct();
+  }, []); // Empty dependency array ensures useEffect runs only once
+
   const handleQuantityChange = (event) => {
     const value = parseInt(event.target.value);
     setQuantity(value);
   };
-  const { id } = useParams();
-  // Calculate total price based on quantity
-  const totalPrice = (price * quantity).toFixed(2);
-  
-  const [itemsData,setitemsData]=useState({
-    id:"",
-    price:"",
-    imageUrl:"",
-    description:"",
 
-
-  }
-  
-  )
-
- 
-      let data=axios.post(`http://localhost:9000/ProductDetails`,{
-        id:"661e56c803cb0efc3df5143b"
-      })
-      console.log("data",data)
-  
-      data.data.map(()=>{
-        setitemsData({
-          id:item._id,
-          price:item.price,
-          imageUrl:item.imageUrl
-        })
-      })
-
-  
-  // Get the product ID from the URL params
- 
-
-  // Fetch product details based on the product ID
-
+  const totalPrice = product ? (product.price * quantity).toFixed(2) : 0;
 
   return (
     <Layout>
@@ -80,54 +58,15 @@ function ProductDetails() {
             <div className="w-full md:flex md:flex-row flex flex-col justify-between ">
               {/* Product Image */}
               <div className="w-full md:w-[60%]">
-                <img src="public\Men\item-1.jpg" alt="" className="border" />
+                <img src={product?.image} alt="" className="border" />
               </div>
 
               {/* Product Details */}
               <div className="w-full md:w-[37%] ">
-                <p className="text-xl font-bold">BOOTS SHOES MACA</p>
+                <p className="text-xl font-bold">{product?.name}</p>
                 <p className="text-xl font-bold">£{totalPrice}</p>
-                <p className="mt-[20px]">
-                {itemsData.description}
-                </p>
-                {/* Size Selector */}
-                <div className="w-full flex  items-center gap-4">
-                  <div className="w-1/2 relative inline-block text-left mt-5">
-                    <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                      <option value="">Select size</option>
-                      <option value="small">Small size</option>
-                      <option value="medium">Medium size</option>
-                      <option value="large">Large size</option>
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg
-                        className="fill-current h-4 w-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  {/* Quantity Input */}
-                  <div className="w-1/2 mt-5">
-                    <input
-                      type="number"
-                      className="w-1/2 bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline placeholder:text-black"
-                      min="1"
-                      value={quantity}
-                      onChange={handleQuantityChange}
-                    />
-                  </div>
-                </div>
-                {/* Add to Cart Button */}
-                <Link to="/cart">
-                  <button className="w-full bg-[#88C8BC] mt-4 py-2 border font-medium">Add To Cart</button>
-                </Link>
+                <p className="mt-[20px]">{product?.description}</p>
+                <button className="w-full bg-[#88C8BC] mt-4 py-2 border font-medium">Add To Cart</button>
               </div>
             </div>
           </div>
@@ -136,21 +75,7 @@ function ProductDetails() {
         {/* Brand Images */}
         <div className="w-full flex justify-center mt-[650px] xs:mt-[600px] sm:mt-[750px] md:mt-[400px] lg:mt-[500px]">
           <div className="w-[70%] h-[100px] md:h-[250px] flex justify-between flex-wrap">
-            <div className="w-[60px] md:w-[150px]">
-              <img src="public/Home/brand-1.jpg" alt="Brand 1" />
-            </div>
-            <div className="w-[60px] md:w-[150px]">
-              <img src="public/Home/brand-2.jpg" alt="Brand 2" />
-            </div>
-            <div className="w-[60px] md:w-[150px]">
-              <img src="public/Home/brand-3.jpg" alt="Brand 3" />
-            </div>
-            <div className="w-[60px] md:w-[150px]">
-              <img src="public/Home/brand-4.jpg" alt="Brand 4" />
-            </div>
-            <div className="w-[60px] md:w-[150px]">
-              <img src="public/Home/brand-5.jpg" alt="Brand 5" />
-            </div>
+            {/* Brand images */}
           </div>
         </div>
       </div>

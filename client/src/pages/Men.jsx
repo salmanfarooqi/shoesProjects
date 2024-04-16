@@ -96,13 +96,13 @@ function Men() {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center">
-          <div className="w-[70%] flex justify-between flex-wrap">
+        <div className="w-full flex justify-center">
+      <div className="w-[70%] flex justify-center items-center flex-wrap gap-4">
             {itemsData.map((item) => (
               <Link
-              to="/ProductDetails"
-                key={item.id}
-                className="flex flex-col border mt-4  w-full sm:w-[220px] justify-center items-center"
+               to={`/ProductDetails/${item._id}`}
+                key={item._id}
+                className="flex flex-col border mt-4 w-full sm:w-[220px]  lg:w-[220px] justify-center items-center"
               >
                 <img src={item.imageUrl} alt="" className="object-cover" />
                 <p className="text-center px-2 py-2">{item.name}</p>

@@ -259,10 +259,10 @@ const Navbar = () => {
           </div>
           <div className="flex mt-10 items-end justify-end text-2xl gap-7 md:hidden">
             <Link to="/login" className="text-white">
-              <BsFillPersonFill />
+              <BsFillPersonFill className="w-10 h-10"/>
             </Link>
             <Link to="/cart" className="text-white">
-              <CiShoppingCart />
+              <CiShoppingCart className="w-10 h-10"/>
             </Link>
           </div>
         </div>
