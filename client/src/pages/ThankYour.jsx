@@ -34,7 +34,7 @@ const ThankYouPage = () => {
               </p>
              
 
-             <Link to="/shop"> <p className="inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded transition duration-300"> Back to shop</p></Link>
+             <Link to="/"> <p className="inline-block bg-[#d9f4f0] hover:bg-[#88C8BC]  text-black font-bold py-2 px-4 rounded transition duration-300"> Back to shop</p></Link>
             </div>
           </div>
         </div>

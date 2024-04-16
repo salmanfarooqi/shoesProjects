@@ -166,15 +166,15 @@ function ShoppingCart() {
             <div className="mb-5 ">
               <form className="max-w-full">
                 <div className="site-blocks-table  ">
-                  <table className="table w-full bg-[#a1ddd4]  rounded-full" >
-                    <thead >
-                      <tr >
-                        <th className="text-center py-3">Image</th>
+                  <table className="table w-full   " >
+                    <thead className=''>
+                      <tr className='bg-[#a1ddd4] w-full rounded-full'>
+                        <th className="text-center py-3 rounded-l-full">Image</th>
                         <th className="text-center">Product</th>
                         <th className="text-center">Price</th>
                         <th className="text-center">Quantity</th>
                         <th className="text-center">Total</th>
-                        <th className="text-center">Remove</th>
+                        <th className="text-center rounded-r-full">Remove</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -195,7 +195,7 @@ function ShoppingCart() {
                             </div>
                           </td>
                           <td className="text-center"> &pound;{(item.price * item.quantity)}</td>
-                          <td className="text-center" ><button className="">X</button></td>
+                          <td className="text-center" onClick={(e) => handleDelete(item.id,e)} ><button className="">X</button></td>
                         </tr>
                       ))}
                     </tbody>
