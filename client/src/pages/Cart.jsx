@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
@@ -18,7 +19,7 @@ function ShoppingCart() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:9000/");
+        const response = await axios.get("http://localhost:9000/getCartData");
         const products = response.data; // Assuming the API response contains an array of products
         
         // Fetch userId from localStorage
@@ -45,7 +46,7 @@ function ShoppingCart() {
   
     fetchProducts();
   }, [reload]);
-  
+  console.log("apidata",cartItems)
 
   // useEffect(() => {
   //   const fetchProducts = async () => {
@@ -69,20 +70,20 @@ function ShoppingCart() {
   // }, [reload]);
 
 
-  // let handleDelete=async(id,e)=>{
-  //   e.preventDefault();
-  //   try {
-  //     let deleteItem=await axios.post("http://localhost:9000/deleteCartItems",{
-  //       cartItemId:id
+  let handleDelete=async(id,e)=>{
+    e.preventDefault();
+    try {
+      let deleteItem=await axios.post("http://localhost:9000/deleteCartItems",{
+        cartItemId:id
 
-  //     })
+      })
 
-  //     setReload(!reload)
+      setReload(!reload)
       
-  //   } catch (error) {
-  //       console.log("erro",error)
-  //   }
-  // }
+    } catch (error) {
+        console.log("erro",error)
+    }
+  }
   useEffect(() => {
     let subtotalAmount = 0;
     cartItems.forEach(item => {
@@ -108,18 +109,18 @@ function ShoppingCart() {
     }
   };
 
-  // const fetchProduct = async (id) => {
-  //   try {
-  //     await axios.post("http://localhost:9000/deleteCartItems", {
-  //       cartItemId: id
-  //     });
-  //     setCartItems(prevItems =>
-  //       prevItems.filter(item => item.id !== id)
-  //     );
-  //   } catch (error) {
-  //     console.error("Error deleting product:", error);
-  //   }
-  // };
+  const fetchProduct = async (id) => {
+    try {
+      await axios.post("http://localhost:9000/deleteCartItems", {
+        cartItemId: id
+      });
+      setCartItems(prevItems =>
+        prevItems.filter(item => item.id !== id)
+      );
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
 
   const handleCheckout = () => {
     navigate('/Checkout');
